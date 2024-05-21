@@ -9,6 +9,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // Method to handle the login with Google
+  void _loginWithGoogle() {
+    // Perform login with Google logic here
+    // For example, you can use Firebase Authentication
+    // Once authenticated successfully, navigate to the home page
+    Navigator.pushReplacementNamed(context,
+        '/HomeNavPage'); // Replace '/home' with the route name of your home page
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,22 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                       fixedSize:
                           Size((MediaQuery.of(context).size.width) - 100, 45),
                     ),
-                    onPressed: () async {
-                      print(MediaQuery.of(context).size.width);
-                      showDialog(
-                        context: context,
-                        barrierDismissible:
-                            false, // Prevents user from dismissing the dialog
-                        builder: (BuildContext context) {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  const Color.fromARGB(255, 247, 243, 243)),
-                            ),
-                          );
-                        },
-                      );
-                    },
+                    onPressed:
+                        _loginWithGoogle, // Call the login method when the button is pressed
                     icon: Image.asset(
                       'assets/g.png',
                       height: 24.0, // Adjust the height as needed
